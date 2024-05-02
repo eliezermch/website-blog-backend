@@ -1,4 +1,4 @@
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets
 from .models import Task
 from .serializers import Task_serializer
 from rest_framework.decorators import action
@@ -10,7 +10,7 @@ from rest_framework import status
 
 class TaskViewSet(viewsets.ModelViewSet):
     serializer_class = Task_serializer
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
