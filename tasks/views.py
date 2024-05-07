@@ -4,13 +4,18 @@ from .serializers import Task_serializer
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.decorators import authentication_classes, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 
 # Create your views here.
 
 
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
 class TaskViewSet(viewsets.ModelViewSet):
     serializer_class = Task_serializer
-    # permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
