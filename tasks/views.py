@@ -27,5 +27,6 @@ class TaskViewSet(viewsets.ModelViewSet):
         task.done = not task.done
         task.save()
         return Response({
-            'status': 'task done' if task.done else 'task undone'
+            'status': 'task done' if task.done else 'task undone',
+            'done': True if task.done else False
         }, status=status.HTTP_200_OK)
